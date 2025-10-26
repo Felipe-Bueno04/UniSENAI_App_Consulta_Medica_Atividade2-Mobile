@@ -1,0 +1,28 @@
+// 1. O Gerador: Diz ao Prisma para criar o cliente TypeScript
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 2. A Fonte de Dados: Diz ao Prisma como se conectar ao seu MySQL
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// 3. O Modelo: Define a estrutura da nossa tabela de consultas
+model consultas {
+  id                 Int           @id @default(autoincrement())
+  nome_paciente      String        @db.VarChar(200)
+  data_hora_consulta DateTime      @db.DateTime(0)
+  especialidade      Especialidade
+  nome_medico        String        @db.VarChar(200)
+  data_criacao       DateTime      @default(now()) @db.DateTime(0)
+}
+
+// 4. O Enum: Garante que o campo 'especialidade' só aceite estes valores
+enum Especialidade {
+  CARDIOLOGISTA
+  GERAL
+  PSIQUIATRIA
+  NEUROLOGISTA
+}
