@@ -1,4 +1,5 @@
 import React from 'react';
+import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 import { AppNavigator } from './src/navigation/AppNavigator';
 
@@ -10,3 +11,5 @@ export default function App() {
     </>
   );
 }
+
+registerRootComponent(App);
