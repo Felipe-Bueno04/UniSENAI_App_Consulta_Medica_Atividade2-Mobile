@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { CreateConsultaScreen } from '../screens/CreateConsultaScreen';
 import { ListConsultasScreen } from '../screens/ListConsultasScreen';
+import { EditConsultaScreen } from '../screens/EditConsultaScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,11 @@ export function AppNavigator() {
           component={CreateConsultaScreen}
           options={{ title: 'Agendar Nova Consulta' }}
         />
+        <Stack.Screen 
+          name="EditConsulta" 
+          component={EditConsultaScreen} 
+          options={{ title: 'Editar Consulta' }} 
+/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -24,3 +24,22 @@ export const createConsulta = async (consultaData) => {
     throw error;
   }
 };
+
+export const updateConsulta = async (id, consultaData) => {
+  try {
+    const response = await api.put(`/consultas/${id}`, consultaData);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao atualizar consulta:", error);
+    throw error;
+  }
+};
+
+export const deleteConsulta = async (id) => {
+  try {
+    await api.delete(`/consultas/${id}`);
+  } catch (error) {
+    console.error("Erro ao excluir consulta:", error);
+    throw error;
+  }
+};

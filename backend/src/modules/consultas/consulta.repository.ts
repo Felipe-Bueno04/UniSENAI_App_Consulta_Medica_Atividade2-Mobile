@@ -8,3 +8,15 @@ export function list() {
 export function create(data: Prisma.consultasCreateInput) {
   return prisma.consultas.create({ data });
 }
+
+export function findByID(id: number) {
+  return prisma.consultas.findUnique({ where: { id } });
+}
+
+export function update(id: number, data: Prisma.consultasUpdateInput) {
+  return prisma.consultas.update({ where: {id}, data });
+}
+
+export function remove(id: number) {
+  return prisma.consultas.delete({ where: {id} });
+}

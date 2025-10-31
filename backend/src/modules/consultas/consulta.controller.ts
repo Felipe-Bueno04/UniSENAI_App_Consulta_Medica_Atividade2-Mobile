@@ -20,3 +20,24 @@ export async function createConsulta(req: Request, res: Response, next: NextFunc
         return next(err);
     }
 }
+
+export async function updateConsulta(req: Request, res: Response, next: NextFunction) {
+    try {
+        const { id } = req.params;
+        const body = createConsultaSchema.parse(req.body);
+        const updated = await service.updateConsulta(Number(id), body);
+        return res.json(updated);
+    } catch (err) {
+        return next(err);
+    }
+}
+
+export async function deleteConsulta(req: Request, res: Response, next: NextFunction) {
+    try {
+        const { id } = req.params;
+        await service.deleteConsulta(Number(id));
+        return res.status(204).send();
+    } catch (err) {
+        return next(err);
+    }
+}
