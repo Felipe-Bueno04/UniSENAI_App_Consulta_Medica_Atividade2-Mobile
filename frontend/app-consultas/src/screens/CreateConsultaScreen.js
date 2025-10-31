@@ -18,7 +18,8 @@ export function CreateConsultaScreen({ navigation }) {
       return Alert.alert('Atenção', 'Todos os campos são obrigatórios.');
     }
 
-    const dataHoraISO = `${data}T${hora}:00.000Z`;
+    const [dia, mes, ano] = data.split('-');
+    const dataHoraISO = `${ano}-${mes}T${hora}:00.000Z`;
 
     try {
       await createConsulta({
@@ -30,7 +31,7 @@ export function CreateConsultaScreen({ navigation }) {
       Alert.alert('Sucesso!', 'Consulta agendada.');
       navigation.goBack();
     } catch (error) {
-      Alert.alert('Erro', 'Não foi possível agendar. Verifique os dados (AAAA-MM-DD e HH:MM).');
+      Alert.alert('Erro', 'Não foi possível agendar. Verifique os dados (DD-MM-AAAA e HH:MM).');
     }
   };
 
@@ -47,7 +48,8 @@ export function CreateConsultaScreen({ navigation }) {
         style={styles.input}
         value={data}
         onChangeText={setData}
-        placeholder="AAAA-MM-DD"
+        placeholder="DD-MM-AAAA"
+        placeholderTextColor="#999"
       />
 
       <Text style={styles.label}>Hora da Consulta</Text>
